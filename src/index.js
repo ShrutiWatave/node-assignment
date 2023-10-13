@@ -31,6 +31,10 @@ app.get('/', (req,res) => {
     res.send(dummyData);
 });
 
+const usersRouter = require('./v1/routes/user');
+app.use('/v1/auth', usersRouter);
+
+
 app.listen(5000, ()=> {
     console.log("listening on 5000");
 });
