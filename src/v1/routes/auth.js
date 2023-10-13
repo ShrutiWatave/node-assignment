@@ -22,15 +22,14 @@ router.route('/signup').post((req, res) => {
         password
     });
 
-    // const insesrtion = newUser.save()
-    // console.log(insesrtion)
+    newUser.save()
+        .then(newuser => res.json(newuser))
+        .catch(err => res.json("Error: " + err))
+})
 
-    const insertion = newUser.save()
-        .then(() => {
-            const {} = insertion
-            console.log("data", insertion)
-            res.json(res.body)
-        })
+router.route('/signin').post((req, res) => {
+    const user = User.find({email: req.body.email, password: req.body.password})
+        .then(user => res.json(user))
         .catch(err => res.json("Error: " + err))
 })
 

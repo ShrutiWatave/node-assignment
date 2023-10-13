@@ -31,8 +31,10 @@ app.get('/', (req,res) => {
     res.send(dummyData);
 });
 
-const usersRouter = require('./v1/routes/user');
-app.use('/v1/auth', usersRouter);
+const authRouter = require('./v1/routes/auth');
+const roleRouter = require("./v1/routes/role")
+app.use('/v1/auth', authRouter);
+app.use('/v1/role', roleRouter);
 
 
 app.listen(5000, ()=> {
